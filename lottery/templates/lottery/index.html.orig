@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="{% static 'lottery/style.css' %}">
+<!--<link rel="stylesheet" type="text/css" href="{% static 'lottery/lottery.css' %}">-->
+<head>
+<title>Lottery</title>
+<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{% static 'lottery/dial.js' %}"></script>
+</head>
+<body>
+    <div id="sitebody">
+        <div id="sidebar_left">
+            <h3>獎項</h3>
+            {% if award_list %}
+                <ul>
+                {% for a in award_list %}
+                    {% if current_award and a.award_id == current_award.award_id  %}
+                    <li class="current" id="{{ a.award_id }}">{{ a.award_name }}</li>
+                    {% else %}
+                    <li id="{{ a.award_id }}">{{ a.award_name }}</li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No awards are available.</p>
+            {% endif %}
+        </div>
+        <div id="sidebar_right" style="display: none">
+            <h3>獎池名單</h3>
+            {% if person_list %}
+            <ul id="person_list">
+            <!--{% for p in person_list %}
+                {% if p.award_id == 0 or p.award == None %}
+                <li style="color:red">{{ p.name }}</li>
+                {% else %}
+                <li >{{ p.name }}</li>
+                {% endif %}
+            {% endfor %}-->
+            </ul>
+            {% else %}
+                <p>No people attend the lottery.</p>
+            {% endif %}
+            
+            
+        </div>
+        <div id="content">
+            <div class="m-ui-dial" >
+                    <div class="spinner" id="js_pointer" ></div>
+                    <div class="pointer">
+                        <div class="btn" >
+                            <!--<a id="first_step" href="javascript:;" onclick="SelectFirst()" style="display: block">開始<br>抽獎</a>-->
+                            <a id="start_spinner" href="javascript:;" onclick="lottery.draw()" style="display: block">啟動<br>轉盤</a>
+                        </div>
+
+                       
+                        
+                    </div>
+            </div>
+            <!--
+            {% if current_award %}
+            <form action="{% url 'lottery:doLottery' current_award.award_id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Spin!">
+            </form>
+            {% endif %}
+             -->
+        </div>
+        
+        <div id="popWindow" style="visibility: hidden">
+               <h4> {{ current_award.descript_text }}</h4>
+               <ul id="won_list"></ul>
+            <a href="javascript:;" onclick="CloseWinner()">Close</a>
+        </div> 
+    </div>
+
+    
+
+</body>
+<script>
+
+        var lottery = new LotteryDial(document.getElementById('js_pointer'), { // eslint-disable-line
+          speed: 60, // 每帧速度
+          areaNumber: 10 // 奖区数量
+        })
+       
+        var index = -1
+        lottery.on('start', function () {
+           //index = Math.round(Math.random() * $('ul#person_list li').length)
+          //console.log( $('ul#person_list  li').length)
+          lottery.setResult(index)
+          
+          
+      //    // 假如请求出错
+      //    setTimeout(function () {
+      //      lottery.reset()
+      //    }, 1000)
+        })
+        lottery.on('end', function () {
+            //AJAX Get result
+            $.ajax({        
+                type: "GET",
+                url: "{% url 'lottery:doLottery' current_award.award_id %}",
+                //data: data,
+                success: function(data) {
+                    var test='{ "person" :'+ data.queryset +'}'
+                    var test_obj = JSON.parse(test)
+                    PopWinner(test_obj)
+                },
+
+                error: function(response, error) {
+                    alert(error)
+                }
+            });
+            
+        })
+
+        function PopWinner(person_list_obj)
+        {
+            $("#popWindow").css("visibility","visible")
+<<<<<<< HEAD
+            console.log(person_list_obj)
+            for (var i = 0; i < person_list_obj.person.length; i++) {
+                $("<li>"+person_list_obj.person[i]["fields"]["name"]+"<br>"
+                +person_list_obj.person[i]["pk"]+"</li>").appendTo("#won_list")
+=======
+            
+            for (var i = 0; i < person_list_obj.person.length; i++) {
+                $("<li>"+person_list_obj.person[i]["fields"]["name"]+"<br>"
+                +person_list_obj.person[i]["fields"]["person_id"]+"</li>").appendTo("#won_list")
+>>>>>>> 1e4e5c4b1176c809b47e779650a72b3923eecef7
+            }
+            centerHandler (); /*呼叫置中函式，使廣告區塊置中*/
+        }
+        
+        function CloseWinner()
+        {
+            $("#popWindow").css("visibility","hidden")
+        }
+
+        function centerHandler(){/*設定置中的函式*/
+            var scrollDist=$(window).scrollTop();/*取得捲動長度*/ 
+            var myTop=($(window).height()-$("#popWindow").height())/2+scrollDist; 
+            /*取得垂直中央位置*/ 
+            var myLeft=($(window).width()-$("#popWindow").width())/2; 
+            /*取得水平中央位置*/ 
+            $("#popWindow").offset({top:myTop,left:myLeft}); 
+            /*設定區塊於水平與垂直置中*/
+        } 
+
+        
+</script>
+</html>

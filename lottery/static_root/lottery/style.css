@@ -1,0 +1,557 @@
+:root{
+    --main-width: 1600px;
+    --main-height: 900px;
+    --main-height-10px:880px;
+
+}
+ul {
+    margin:0;
+    padding: 0;
+}
+
+body {
+
+    background: #000000;
+    margin:0;
+    font-family: Microsoft JhengHei UI;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+div#sitebackground{
+    /*width:var(--main-width);
+    height: var(--main-height);*/
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    margin:0 auto;
+    font-size:15px;
+    background: #000000 url("images/2_background_900_full.jpg") ;
+    background-repeat: no-repeat;
+    background-position: top;
+    /*background-size: 1440px 900px;*/
+    background-size: contain;
+    position: absolute;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    /*animation: fadein 0.3s linear 1;*/
+}
+
+div#sitebody{
+    width: 160vh;
+}
+    
+
+.sidebar{
+    width: 14vw;
+    height: 44vw;
+    margin: 1vw;
+    padding: 15vw 0 0 1.5vw;
+
+    text-align: center;
+    float: left;
+    display: flex;
+    justify-content: left;
+
+}
+
+.sidebar ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: black;
+
+}
+
+
+.sidebar li{
+    font-size: 1.6vw;
+    line-height: 3vw;
+    width: 15vw;
+
+    list-style: none;
+    border-style: solid;
+    border-width: 2px;
+    border-image: linear-gradient(to left, #dac181 0%, #79572a 100%);
+    border-image-slice: 1;
+    color: #FFFFFF;
+    
+    font-weight: 1000;
+    overflow: hidden;
+    transition: all 0.4s ease-out;
+
+}
+
+.sidebar li.current {
+    background-color: darkgoldenrod;
+    -webkit-animation: flipper 0.8s forwards;
+    animation: flipper 0.8s forwards;
+}
+
+@keyframes flipper {
+  0% { -webkit-transform: rotateY(0deg); transform: rotateY(0deg); }
+  50% { -webkit-transform: rotateY(180deg); transform: rotateY(180deg); }
+  100% { -webkit-transform: rotateY(0deg); transform: rotateY(0deg); }
+}
+
+
+div#award_content{
+    top: 18vw;
+    left: 22vw;
+    width: 8vw;
+    height: 37vw;
+    position: absolute;
+}
+
+div#award_content span{
+    font-size: 2vw;
+    color: white;
+    -webkit-writing-mode: vertical-lr;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+div#award_remain{
+    top: 14vw;
+    left: 85vw;
+    width: 10vw;
+    font-size: 1.7vw;
+
+    color: white;
+    border-style: solid;
+    border-width: 3px;
+    border-image: linear-gradient(to left, #79572a  0%, #dac181 100%);
+    border-image-slice: 1;
+    position: absolute;
+    text-align: center;
+    display: block;
+    line-height: 60px;
+}
+div#award_remain span{
+    font-size: 60px;
+}
+
+.m-ui-dial .spinner_outer{
+    top: 12vw;
+    left: 36vw;
+    width: 49vw;
+    height: 49vw;
+    background-size: 90%;
+    /*background: url(images/2_dial_bg_outer.png) no-repeat center;*/
+    
+    position: absolute;
+    display: block;
+    
+    filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.7));
+    color: transparent;
+
+}
+
+.m-ui-dial .spinner{
+    background: url(images/2_dial_bg.png) no-repeat center;
+    background-size: 84%;
+    top: -0.3vw;
+    left: -0.4vw;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    display: block;
+    
+    filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.7));
+    color: transparent;
+
+}
+.m-ui-dial .pointer {
+    background: url(images/2_dial_pointer.png) no-repeat center;
+    background-size: 90%;
+    position: absolute;
+    display: block;
+    top: 28vw;
+    left: 51.4vw;
+    width: 17vw;
+    height: 17vw;
+}
+
+.btn{
+    width: 8vw;
+    height: 8vw;
+    display: inline-block;
+    text-decoration: none;
+    color:transparent;
+    font-size: 20px;
+    line-height: 220px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    box-shadow: inset 0px 3px 0 rgba(255,255,255,0.3), 0 3px 3px rgba(0, 0, 0, 0.3);
+
+
+    /*text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.65);*/
+    transition: .2s;
+}
+
+.btn:active{
+    -ms-transform: translateY(1px);
+    -webkit-transform: translateY(1px);
+    transform: translateY(1px);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
+    border-bottom: none;
+}
+
+#resultbtn{
+    position: absolute;
+    left:6vw;
+    top: 3vw;
+}
+
+
+.m-ui-dial .btn {
+    position: absolute;
+    top: 4.5%;
+    left: 6.5%;
+    display: block;
+    width: 89%;
+    height: 89%;
+    border-radius: 50%;
+}
+
+.m-ui-dial a {
+    text-decoration: none;
+    font-family: Microsoft JhengHei UI;
+    color : white;
+    font-size : 1.5em;
+    margin-top: 20px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#blackscreen{
+    position: absolute;
+    background: black;
+    opacity: 0.8;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    animation: fadein_black 0.3s linear 1;
+}
+@keyframes fadein_black
+{
+    0% { opacity: 0;  }
+    100% { opacity: 0.5; }
+}
+
+
+#confirmbtn_set_wrap
+{
+    display: flex;
+    justify-content: center;
+}
+
+
+#confirmbtn_set
+{
+    display: flex;
+    width: 400px;
+    justify-content: space-around;
+}
+
+
+.popWindow_wrap
+{
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    min-height: 100%;
+    width: 100%; 
+    min-width: 100%;
+    /*height: var(--main-height);
+    width: var(--main-width);*/
+
+}
+
+.popWindow{
+    /*display: flex;*/
+    background: rgba(100%,92%,90%,0.95);
+    box-shadow:2px 2px 20px black;
+    border:10px black solid;
+    border-radius:20px;
+    z-index: 3;
+    text-align: center;
+    font-size:smaller;
+    animation: fadein 0.3s linear 1;
+    min-width: 600px;
+    max-height: 100%;
+    overflow: scroll;
+}
+
+
+@keyframes fadein
+{
+    0% { opacity: 0;  }
+    100% { opacity: 0.95; }
+}
+.award_page
+{
+    display: flex;
+    font-size: 1.7vw;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.award_name_content
+{
+    display: flex;
+    font-size: 1.3em;
+    line-height: 3em;
+    margin: 25px;
+    width: 90%;
+    justify-content: center;
+    border-width: 4px 0;
+    border-style: double;
+    border-color: rgb(123, 46, 46);
+}
+
+.award_winners_table
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: left;
+}
+
+.award_winner
+{
+    display: flex;
+    padding: 10px;
+    min-width: 14vw;
+    justify-content: center;
+    border-style: outset;
+}
+
+
+.award_winner#odd
+{
+    
+    background-color: #fbdd507a;
+}
+
+
+.award_winner#even
+{
+    background-color: #dabf81b3;
+}
+
+.popWindow #h1{
+    font-size: 3em;
+    line-height: 50px;
+    font-weight: bold;
+}
+.popWindow #h2{
+    font-size: 2em;
+    line-height: 30px;
+    font-weight: 800;
+}
+.popWindow a.confirmbtn:link{
+    display:flex;
+    text-decoration: none;
+    font-family: Microsoft JhengHei UI;
+    color : rgba(40%,20%,20%,1);
+    font-size : 2em;
+    padding: 5px 20px;
+    text-align: center;
+    border:1px rgba(50%,20%,20%,1) solid;
+    border-radius:5px;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    margin: 20px auto;
+    /*width: 100px;*/
+}
+
+.popWindow a.confirmbtn:hover{
+    background: rgba(90%,60%,30%,0.7);
+}
+
+.popWindow a.confirmbtn:active{
+    box-shadow:1px 1px 3px 2px rgba(30%,20%,40%,0.5) inset;
+}
+
+.popWindow#all_won 
+{
+    max-block-size: -webkit-fill-available;
+    overflow: scroll;
+}
+
+.popWindow#all_won a
+{
+    position: sticky;
+    /* left: 1500px; */
+    /* width: 30px; */
+    top: 10px;
+    height: 50px;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 10px;
+
+}
+
+#wontable_row
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90vw;
+    justify-content: center;
+}
+
+.winner
+{
+    font-size: 1.6em;
+    font-weight: 800;
+    width: 17vw;
+    padding: 4px 0;
+
+}
+
+.popWindow table
+{
+
+    margin: 0 auto;
+    text-align:center;
+
+}
+
+
+.popWindow p
+{
+    font-size: 0.75em;
+    line-height: 1.2em;
+
+}
+
+
+.popWindow p#winner_name
+{
+    color: deeppink;
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 0em;
+}
+
+.popWindow #other_prize td
+{
+    padding-top: 30px;
+    line-height: 0em;
+    background: yellowgreen;
+}
+
+
+.popWindow table#tb_first_prize td
+{
+    font-size: large;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+
+.m-ui-dial {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+@media screen and (min-aspect-ratio: 1440/900) {
+    .m-ui-dial {
+        bottom: 59vh;
+    }
+
+    #sitebody{
+        width: 1440px;
+    }
+    #content
+    {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .sidebar {
+        width: 25vh !important;
+        height: 70vh !important;
+        margin: 1vh !important;
+        padding: 25vh 0 0 2.2vh !important;
+        position: absolute;
+    }
+    
+    .sidebar li
+    {
+        width: 25vh;
+        font-size: 3vh;
+        line-height: 5vh;
+    }
+    
+    div#award_content {
+    top: 0; 
+    left: 0; 
+    padding: 30vh 0 0 38vh;
+    width: 8vh;
+    height: 55vh;
+    position: inherit;
+    }
+    
+    #resultbtn {
+    position: absolute;
+    left: 0; 
+    top: 0; 
+    margin: 3.5vh 0 0 8.5vh;
+    width: 13vh;
+    height: 13vh;
+    }
+
+    .m-ui-dial {
+        position: absolute;
+    }
+
+    .spinner
+    {
+        top: -6vh;
+        left: -1vh;
+    }
+    .spinner_outer {
+        top: -21vh !important;
+        left: 58vh !important;
+        width: 78vh !important;
+        height: 78vh !important;
+    }
+    .pointer{
+        top: 4vh !important;
+        left: 83vh !important;
+        width: 26vh !important;
+        height: 26vh !important;
+    }
+    div#award_remain {
+        top: 0;
+        left: 0;
+        width: 17vh;
+        font-size: 2.5vh;
+        margin: -60vh 0 0 135vh;
+        position: static;
+    }
+    div#award_content span {
+    font-size: 4vh;
+    }
+
+    
+}
+

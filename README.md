@@ -1,2 +1,3 @@
 # Django_lottery
-A lottery website tool using Django
+
+demo: http://fikacschoko.pythonanywhere.com/
